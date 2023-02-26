@@ -26,7 +26,7 @@ const loginUser = async (req: Request, res: Response) => {
     };
 
     const accessToken = sign(payload, process.env.JWT_ACCESS_KEY as Secret, {
-      expiresIn: '1m',
+      expiresIn: '20s',
     });
 
     const refreshToken = sign(payload, process.env.JWT_REFRESH_KEY as Secret, {
@@ -36,7 +36,7 @@ const loginUser = async (req: Request, res: Response) => {
     res.cookie('refreshToken', refreshToken, {
       httpOnly: true,
       sameSite: 'none',
-      secure: true,
+      //secure: true, // This is only for production
     });
 
     res.json({ accessToken });
