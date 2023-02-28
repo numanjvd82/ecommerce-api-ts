@@ -16,7 +16,7 @@ const refreshTokenGenerator = (req: Request, res: Response) => {
     { id: decoded.id, role: decoded.role },
     process.env.JWT_ACCESS_KEY as Secret,
     {
-      expiresIn: '1m',
+      expiresIn: '15m', // real app would be 15m
     }
   );
 
