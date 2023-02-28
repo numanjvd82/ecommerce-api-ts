@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { compare } from 'bcryptjs';
 import User from '../models/User';
-import { Jwt, JwtPayload, Secret, sign, verify } from 'jsonwebtoken';
+import { Secret, sign } from 'jsonwebtoken';
 
 type UserPayload = {
   id: string;
@@ -26,7 +26,7 @@ const loginUser = async (req: Request, res: Response) => {
     };
 
     const accessToken = sign(payload, process.env.JWT_ACCESS_KEY as Secret, {
-      expiresIn: '20s',
+      expiresIn: '15m', // real app would be 15m
     });
 
     const refreshToken = sign(payload, process.env.JWT_REFRESH_KEY as Secret, {
@@ -35,11 +35,11 @@ const loginUser = async (req: Request, res: Response) => {
 
     res.cookie('refreshToken', refreshToken, {
       httpOnly: true,
-      sameSite: 'none',
+      // sameSite: 'none',
       //secure: true, // This is only for production
     });
 
-    res.json({ accessToken });
+    res.json({ accessToken, role: foundUser.role });
   } catch (error) {
     throw new Error(error.message);
   }

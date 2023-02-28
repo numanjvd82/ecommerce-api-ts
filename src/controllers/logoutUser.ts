@@ -7,7 +7,7 @@ const logoutUser = (req: Request, res: Response) => {
   }
   res.clearCookie('refreshToken', {
     httpOnly: true,
-    sameSite: 'none',
+    // sameSite: 'none',
     //secure: true, // This is only for production
   });
 
