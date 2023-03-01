@@ -5,6 +5,8 @@ import verifyJwt from '../middlewares/verifyJwt';
 import { Request, Response } from 'express';
 import refreshTokenGenerator from '../controllers/refreshToken';
 import logoutUser from '../controllers/logoutUser';
+import upload from '../config/multer';
+import productController from '../controllers/productController';
 
 const router = express.Router();
 
@@ -12,7 +14,7 @@ router.post('/login', loginUser.loginUser);
 
 // Protected route with our verifyJwt middleware
 router.get('/getnotes', verifyJwt, (req: Request, res: Response) => {
-  res.send('This is a protected route');
+  res.send(`Your id is: ${req.body.id} and your email is: ${req.body.role}`);
 });
 
 // Route for our refresh token
@@ -20,6 +22,14 @@ router.get('/refresh', refreshTokenGenerator);
 
 // Route for our logout
 router.get('/logout', logoutUser);
+
+// Route for our create product
+router.post(
+  '/create',
+  verifyJwt,
+  upload.single('image'),
+  productController.createProduct
+);
 
 router.post('/register', registerUser);
 

@@ -3,7 +3,6 @@ import { Request, Response, NextFunction } from 'express';
 
 const verifyJwt = (req: Request, res: Response, next: NextFunction) => {
   const token = req.headers['authorization'];
-  console.log(token);
   if (!token) {
     return res.status(401).json({ message: 'No token Found' });
   }
@@ -15,7 +14,6 @@ const verifyJwt = (req: Request, res: Response, next: NextFunction) => {
     req.body.id = (decoded as JwtPayload).id;
     req.body.role = (decoded as JwtPayload).role;
   });
-  console.log(req.body);
   next();
 };
 
