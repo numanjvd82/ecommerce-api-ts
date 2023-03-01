@@ -26,13 +26,13 @@ This API provides the following features:
 
 ### Users
 
-- `POST /api/users/register` - Register a new user
-- `POST /api/users/login` - Login as an existing user and receive a JWT access token and refresh token
-- `POST /api/users/refresh-token` - Refresh the access token using the refresh token
+- `POST /api/register` - Register a new user
+- `POST /api/login` - Login as an existing user and receive a JWT access token and refresh token
+- `POST /api/refresh` - Refresh the access token using the refresh token
 
 ### Products
 
-- `POST /api/products` - Create a new product with an image upload to Cloudinary
+- `(PROTECTED) POST /api/products` - Create a new product with an image upload to Cloudinary
 
 ## Conclusion
 
