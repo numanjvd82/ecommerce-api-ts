@@ -35,8 +35,8 @@ const loginUser = async (req: Request, res: Response) => {
 
     res.cookie('refreshToken', refreshToken, {
       httpOnly: true,
-      // sameSite: 'none',
-      //secure: true, // This is only for production
+      sameSite: 'none',
+      secure: true, // This is only for production
     });
 
     res.json({ accessToken, role: foundUser.role });
