@@ -16,7 +16,7 @@ const ProductSchema = new Schema<IProduct>({
     type: String,
     required: true,
     trim: true,
-    minlength: 3,
+    minlength: 5,
   },
   price: {
     type: Number,
@@ -28,6 +28,7 @@ const ProductSchema = new Schema<IProduct>({
     type: String,
     required: true,
     trim: true,
+    minlength: 10,
     maxlength: 1000,
   },
   category: {

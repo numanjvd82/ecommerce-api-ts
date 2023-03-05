@@ -8,10 +8,10 @@ const logoutUser = (req: Request, res: Response) => {
   res.clearCookie('refreshToken', {
     httpOnly: true,
     sameSite: 'none',
-    secure: true, // This is only for production
+    // secure: true, // This is only for production
   });
 
-  res.json({ message: 'User logged out' });
+  return res.json({ message: 'User logged out' });
 };
 
 export default logoutUser;

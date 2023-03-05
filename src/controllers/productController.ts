@@ -45,9 +45,11 @@ const createProduct = async (req: Request<{}, {}, IProduct>, res: Response) => {
     };
 
     const product = await Products.create(newProduct);
-    res.status(201).json({ message: 'Product created successfully', product });
+    return res
+      .status(201)
+      .json({ message: 'Product created successfully', product });
   } catch (err) {
-    res.status(409).json({ message: err.message });
+    return res.status(409).json({ message: err.message });
   }
 };
 

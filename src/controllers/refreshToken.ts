@@ -20,7 +20,7 @@ const refreshTokenGenerator = (req: Request, res: Response) => {
     }
   );
 
-  res.json({
+  return res.json({
     message: 'New access token created!',
     accessToken: newAccessToken,
   });

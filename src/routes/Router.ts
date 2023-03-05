@@ -31,6 +31,12 @@ router.post(
   productController.createProduct
 );
 
+// Route for our get products
+router.get('/products', productController.getProducts);
+
+// Route for our get single product
+router.get('/products/:id', productController.getSingleProduct);
+
 router.post('/register', registerUser);
 
 export default router;
